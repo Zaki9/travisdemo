@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dd462b3c-3221-466b-aa5d-a0ae20d8d02e" >
+	 <http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="0a06886d-7f53-4e14-9e92-34d9b92c944d" file="dev.properties" />
+	<flow name="travis-demoFlow" doc:id="5c881d48-33f7-40a7-8e5e-9cbf43ce59ff" >
+		<http:listener doc:name="Listener" doc:id="04b1d41e-036a-49fe-87ea-cfc96bec0a0e" config-ref="HTTP_Listener_config" path="/getData"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5d252122-65bb-45ff-97a1-c44331bb3e28" />
+	</flow>
+</mule>
